@@ -3,6 +3,45 @@
 Helm is a package manager for Kubernetes, which helps you manage, deploy, and maintain applications on Kubernetes clusters. Helm Charts are a collection of files that describe a related set of Kubernetes resources. They are essentially templates that are parameterized using a set of values to be customized during deployment. Helmfiles are an additional layer on top of Helm, which helps manage multiple Helm Charts and their configurations in a more declarative way.
 
 Let's walk through a simple "Hello World" example of deploying a .NET C# WebAPI app using Helm and Helmfile.
+To install Helmfile on Windows, follow these steps:
+
+1. **Download the latest Helmfile release:**
+
+Visit the [official Helmfile GitHub releases page](https://github.com/roboll/helmfile/releases) and download the latest release for Windows. You can use the following PowerShell command to download the latest release (replace `x.y.z` with the actual version number):
+
+```powershell
+Invoke-WebRequest -Uri https://github.com/roboll/helmfile/releases/download/vx.y.z/helmfile_windows_amd64.exe -OutFile helmfile.exe
+```
+
+2. **Move the Helmfile executable to a suitable folder:**
+
+Move the downloaded `helmfile.exe` to a folder of your choice that is included in your system's PATH environment variable, such as `C:\Program Files\`. You can use the following PowerShell command to move the file:
+
+```powershell
+Move-Item -Path .\helmfile.exe -Destination "C:\Program Files\helmfile.exe"
+```
+
+3. **Add the folder containing `helmfile.exe` to your system's PATH (if not already included):**
+
+To use the Helmfile CLI from any location on your system, ensure the folder containing `helmfile.exe` is in your system's PATH environment variable. You can either do this manually through the System Properties dialog or by using the following PowerShell command (assuming you moved `helmfile.exe` to `C:\Program Files\`):
+
+```powershell
+$env:Path += ";C:\Program Files"
+```
+
+Please note that this change to the PATH environment variable is temporary and only applies to the current PowerShell session. To make the change permanent, you'll need to update the PATH environment variable in the System Properties dialog.
+
+4. **Verify the Helmfile installation:**
+
+After installing Helmfile and adding it to your system's PATH, you can verify the installation by running the following command:
+
+```powershell
+helmfile --version
+```
+
+This command should display the version of the installed Helmfile CLI.
+
+Now you can use Helmfile to manage your Helm charts on Windows.
 
 1. **Create a .NET WebAPI application:**
 
